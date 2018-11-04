@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
 
 function displayContent(user) {
@@ -12,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Map/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p id="name">
