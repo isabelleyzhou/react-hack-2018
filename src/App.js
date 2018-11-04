@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LocationList from './components/LocationList';
 import './App.css';
 import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
@@ -46,6 +46,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <header className="App-header">
         {/* <Map/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -61,6 +62,7 @@ class App extends Component {
             Log Out
           </a>
         </header> */}
+        <LocationList/>
         <Map />
       </div>
     );
