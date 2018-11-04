@@ -63,7 +63,7 @@ class App extends Component {
           </a>
         </header> */}
         <LocationList/>
-        <Map />
+        {/* <Map /> */}
       </div>
     );
   }
