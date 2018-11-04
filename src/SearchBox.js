@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List.js';
+import './SearchBox.css';
 import firebase from './firebase-config';
 
 const databaseRef = firebase.database().ref().child('users');
@@ -164,14 +165,14 @@ export default class SearchBox extends React.Component {
         <div className="content">
           <div className="container" id="top">
             <section className="section">
-                 <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                 <input type="text" className="input" onChange={this.handleChange} placeholder="Meet with..." />
                   <List items={this.state.filtered} clicker={this.clicked} />
             </section>
-            <hr />
-            <section className="section">
+            {/* <hr /> */}
+            <section className="bottomsection">
                    <List items={this.state.selected} clicker={this.removeItem} />
             </section>
-            <hr />
+            {/* <hr /> */}
           </div>
           <div className= "selected">
           </div>
@@ -184,9 +185,8 @@ export default class SearchBox extends React.Component {
         <div className="content">
           <div className="container">
             <section className="section">
-                 <input type="text" className="searchinput" onChange={this.handleChange} placeholder="Type..." />
+                 <input type="text" className="searchinput" onChange={this.handleChange} placeholder="Meet with..." />
             </section>
-            <hr />
             {/* <section className="section">
             </section> */}
           </div>

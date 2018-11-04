@@ -65,7 +65,6 @@
     border-radius: 20px;
     border: 0px;
     padding: 10px 60px;
-    box-shadow: 3px 3px 10px gray;
     position: relative;
 }
 
@@ -82,12 +81,18 @@
     max-height: 300px;
     overflow: hidden;
     /* opacity: .7; */
-    filter:blur(1px) brightness(40%);
-    box-shadow: 0 2px 1px gray;
+    filter: brightness(40%);
 }
 
 .pic-darken {
     padding: 0;
+    -webkit-appearance: none;
+    border: 0px;
+    background: none;
+}
+
+.pic-darken:focus {
+    outline: none;
 }
 
 .Modaloverview-text {
@@ -119,7 +124,7 @@
     display: inline-block;
     margin-left: 15px;
     height: auto;
-    width: 150px;
+    width: 70%;
     text-align: left;  
 }
 

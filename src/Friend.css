@@ -1,0 +1,22 @@
+.friend {
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    margin: 0 -4px 10px -4px;
+}
+
+.friend:focus {
+    outline: none;
+}
+
+.dp {
+    margin-bottom: -10px;
+}
+
+.caption {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgb(169, 169, 169);
+    margin-bottom: 10px;
+}

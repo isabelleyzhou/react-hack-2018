@@ -1,13 +1,23 @@
 .App {
   text-align: center;
+  background-color: #194483;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.logoutwrapper {
+  background-color: #194483;
+
 }
 
-.App-header {
+.logout {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  color: white;
+  border: none;
+}
+
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -16,24 +26,24 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
+} */
+/* 
 .App-link {
   color: #61dafb;
-}
+} */
 
 .dp {
   border-radius: 100%;
-  width: 6vh;
+  width: 8vh;
 }
 
-#dp {
+/* #dp {
   border-radius: 100%;
   width: 20vh;
-}
+} */
 
 .Profile {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,6 +51,9 @@
   justify-content: center;
   font-size: calc(24px + 2vmin);
   color: white;
+  -webkit-appearance: none;
+  border: none;
+
 }
 
 @keyframes App-logo-spin {
@@ -52,18 +65,13 @@
   }
 }
 
-ul {
+/* ul {
   min-height: 12.5vh;
-}
+} */
 
 #dp {
   border-radius: 100%;
-  width: 20vh;
-}
-
-.dp {
-  border-radius: 100%;
-  width: 6vh;
+  width: 7vh;
 }
 
 .Profile {
@@ -78,8 +86,11 @@ ul {
 }
 
 button {
-  color: lightseagreen;
+  color: white;
   font-size: calc(12px + 2vmin);
+  -webkit-appearance: none;
+  border: none;
+  background: none;
 }
 
 #left {
@@ -108,7 +119,7 @@ button {
 #logout {
   margin-top: 5%;
   margin-left: 65%;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 /* .picture {
