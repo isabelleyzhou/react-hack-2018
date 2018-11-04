@@ -5,22 +5,6 @@ import './LocationList.css';
 import GoogleMapReact from 'google-map-react';
 import SearchBox from '../SearchBox.js';
 
-let top = true;
-
-function search() {
-  if (top) {
-    document.getElementById("top").style.display = "none";
-    document.getElementById("enter").innerHTML = "Back";
-    document.getElementById("map").style.display = "block";
-    top = false;
-  } else {
-    document.getElementById("top").style.display = "block";
-    document.getElementById("enter").innerHTML = "Search";
-    document.getElementById("map").style.display = "none";
-    top = true;
-  }
-}
-
 class LocationList extends Component {
   constructor() {
     super();
@@ -58,7 +42,7 @@ class LocationList extends Component {
             martinez: [37.8668, -122.2576],
             soda: [37.8756, -122.2588]
           },
-          zoom: 11
+          zoom: 15
         });
       }
       )}
@@ -200,6 +184,9 @@ class LocationList extends Component {
   render() {
     return (
       <div className="llcontainer">
+        <h1>
+          Where2Meet
+        </h1>
         <SearchBox/>
         <button id="enter" onClick={this.search}>Search</button>
         {this.findMiddleRestaurants()}
@@ -219,9 +206,7 @@ class LocationList extends Component {
         }
         
         <div className="LocationList-div" id="map">
-          <div className="header">
-          Meet at...
-          </div>
+          <br />
           {this.state.locations}
         </div>
       </div>

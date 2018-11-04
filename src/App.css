@@ -105,6 +105,12 @@ button {
   margin-top: 5%;
 }
 
+#logout {
+  margin-top: 5%;
+  margin-left: 65%;
+  font-size: 18px;
+}
+
 /* .picture {
   height: 25vh;
 } */

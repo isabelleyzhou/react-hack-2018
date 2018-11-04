@@ -162,7 +162,6 @@ export default class SearchBox extends React.Component {
       if(this.state.loaded){
       return (
         <div className="content">
-          <p>Find your friends</p>
           <div className="container" id="top">
             <section className="section">
                  <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
