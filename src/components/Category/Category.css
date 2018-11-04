@@ -1,0 +1,23 @@
+.container {
+    width: auto;
+    text-align: center;
+}
+
+.circle-image {
+    margin-left:15px;
+    margin-right:15px;
+    display: inline-flex;
+    margin-bottom: 20px;
+    background-color: #bd7878; 
+    height: 100px;
+    width: 100px;
+    border-radius: 100000px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5e5959;
+}
+
+.name {
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+}
