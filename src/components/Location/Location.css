@@ -21,7 +21,7 @@
     max-height: 220px;
     overflow: hidden;
     /* opacity: .7; */
-    filter:blur(1px) brightness(40%);
+    filter: brightness(40%);
 }
 
 .overview-text {
@@ -116,7 +116,7 @@
 
 .leftheaders{
     display: inline-block;
-    margin-left: 30px;
+    margin-left: 15px;
     height: auto;
     width: 150px;
     text-align: left;  
