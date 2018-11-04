@@ -34,7 +34,7 @@ function listUsers(user) {
             const img = snapshot[key].imgurl;
             const name = snapshot[key].username.split(' ')[0];
             userimgs.push(img);
-            html += '<div class="User"><img src=' + img + ' alt="oops" id="dp"/><p><strong>' + name + '</strong></p></div>';
+            html += '<div class="User"><img src=' + img + ' alt="oops" class="dp"/><p><strong>' + name + '</strong></p></div>';
         });
         console.log(userimgs);
         document.getElementById("list").innerHTML = html;
