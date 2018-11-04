@@ -38,7 +38,7 @@ class Location extends Component {
     return (
       <div className="Location-container">
         <button type="submit" onClick={this.openModal} className="pic-darken">
-          <img className="pic" src={image} alt=""></img>
+          <img className="picture" src={image} alt=""></img>
         </button>
         <Modal className="modal" isOpen={modalIsOpen} onAfterOpen={this.afterOpenModal} onRequestClose={this.closeModal}
         contentLabel="yuhh">
