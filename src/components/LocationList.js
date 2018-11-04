@@ -120,8 +120,9 @@ class LocationList extends Component {
     let marker = new maps.Marker({
       position: this.state.center,
       map,
-      label: 'Me',
-      title: 'Hello World!'
+      title: 'Hello World!',
+      icon: {                             
+        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"                           }
     });
 
     var infowindow =  new maps.InfoWindow({content: 'Hey friend!'});
@@ -131,8 +132,10 @@ class LocationList extends Component {
       marker = new maps.Marker({
         position: new maps.LatLng(val[0], val[1]),
         map: map,
-        label: key,
-        title: val
+        // label: key,
+        title: val,
+        icon: {                             
+          url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"                           }
       });
       maps.event.addListener(marker, 'click', (function (marker, count) {
         return function () {
