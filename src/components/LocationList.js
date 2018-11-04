@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 // import { NavLink } from 'react-router-dom';
 import Location from './Location/Location';
 import './LocationList.css';
-import Map from '../Map.js';
 import GoogleMapReact from 'google-map-react';
 import SearchBox from '../SearchBox.js';
 
+let top = true;
 
-
-// const locations = [];
-
-// function createList(names, images, distances) {
-//   for (let i = 0; i < names.length; i += 1) {
-//       locations.push(<Location image={images[i]} locationName={names[i]} milesAway={distances[i]}/>);
-//   }
-//   return locations;
-// }
+function search() {
+  if (top) {
+    document.getElementById("top").style.display = "none";
+    document.getElementById("enter").innerHTML = "Back";
+    document.getElementById("map").style.display = "block";
+    top = false;
+  } else {
+    document.getElementById("top").style.display = "block";
+    document.getElementById("enter").innerHTML = "Search";
+    document.getElementById("map").style.display = "none";
+    top = true;
+  }
+}
 
 class LocationList extends Component {
   constructor() {
@@ -31,7 +35,8 @@ class LocationList extends Component {
       phones: [],
       distances: [],
       locations: [],
-      loaded: false
+      top: true,
+      buttonclicked: false
     };
     if (window.navigator && window.navigator.geolocation) {
       location = window.navigator.geolocation;
@@ -42,6 +47,7 @@ class LocationList extends Component {
         lt = position.coords.latitude;
         ln = position.coords.longitude;
         self.setState ({
+          loaded1: true,
           latitude: lt,
           longitude: ln,
           center: {
@@ -49,15 +55,35 @@ class LocationList extends Component {
             lng: ln
           },
           other_friends: {
-            martinez: [37.8663193, -122.2508],
+            martinez: [37.8668, -122.2576],
             soda: [37.8756, -122.2588]
           },
           zoom: 11
         });
       }
       )}
-
+    this.search = this.search.bind(this);
     this.findMiddleRestaurants= this.findMiddleRestaurants.bind(this); 
+  }
+
+  search() {
+    if (this.state.top) {
+      document.getElementById("top").style.display = "none";
+      document.getElementById("enter").innerHTML = "Back";
+      document.getElementById("map").style.display = "block";
+      this.setState({
+        top: false,
+        buttonclicked: true
+      })
+    } else {
+      document.getElementById("top").style.display = "block";
+      document.getElementById("enter").innerHTML = "Search";
+      document.getElementById("map").style.display = "none";
+      this.setState({
+        top: true,
+        buttonclicked: false
+      })
+    }
   }
 
   findMiddleRestaurants() {
@@ -108,7 +134,7 @@ class LocationList extends Component {
         distances = (payload["businesses"][i]["distance"]/225).toFixed(2);
         coordinatesList = payload["businesses"][i]["coordinates"];
         this.setState({
-          loaded: true, locations: this.state.locations.concat(<Location image={images} locationName={names} number={numbers} milesAway={distances} phone={phones} rating={ratings} price={prices} coordinates={coordinatesList}/>)
+          loaded2: true, locations: this.state.locations.concat(<Location image={images} locationName={names} number={numbers} milesAway={distances} phone={phones} rating={ratings} price={prices} coordinates={coordinatesList}/>)
         })
       }
     }).on('error', (payload)=>{
@@ -120,7 +146,9 @@ class LocationList extends Component {
     let marker = new maps.Marker({
       position: this.state.center,
       map,
-      label: 'Me',
+      icon: {                             
+        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+      },
       title: 'Hello World!'
     });
 
@@ -131,7 +159,9 @@ class LocationList extends Component {
       marker = new maps.Marker({
         position: new maps.LatLng(val[0], val[1]),
         map: map,
-        label: key,
+        icon: {                             
+          url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+        },
         title: val
       });
       maps.event.addListener(marker, 'click', (function (marker, count) {
@@ -169,22 +199,26 @@ class LocationList extends Component {
 
   render() {
     return (
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div className="llcontainer">
         <SearchBox/>
+        <button id="enter" onClick={this.search}>Search</button>
         {this.findMiddleRestaurants()}
         {
-          this.state.loaded ?
+          (this.state.loaded1 && this.state.buttonclicked) ?
+          <div style={{ height: "40vh" }}>
             <GoogleMapReact
-            bootstrapURLKeys={{ key: 'AIzaSyAsKbRzIYNhjUhLqWmH-mbynyNFIFkhd3Y' }}
-            center={this.state.center}
-            zoom={this.state.zoom}
-            onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
-          >
-          </GoogleMapReact>:
+              bootstrapURLKeys={{ key: 'AIzaSyAsKbRzIYNhjUhLqWmH-mbynyNFIFkhd3Y' }}
+              center={this.state.center}
+              zoom={this.state.zoom}
+              onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
+            >
+            </GoogleMapReact>
+          </div>
+          :
           null
         }
         
-        <div className="LocationList-div">
+        <div className="LocationList-div" id="map">
           <div className="header">
           Meet at...
           </div>

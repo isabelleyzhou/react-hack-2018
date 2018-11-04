@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import LocationList from './components/LocationList';
 import './App.css';
-import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
 import Profile from './Profile';
 import List from './List';

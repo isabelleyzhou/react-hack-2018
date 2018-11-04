@@ -15,20 +15,6 @@ var currentUser;
 
 const list = [];
 
-let top = true;
-
-function search() {
-  if (top) {
-    document.getElementById("top").style.display = "none";
-    document.getElementById("enter").innerHTML = "Back";
-    top = false;
-  } else {
-    document.getElementById("top").style.display = "block";
-    document.getElementById("enter").innerHTML = "Search";
-    top = true;
-  }
-}
-
 export default class SearchBox extends React.Component {
     constructor(props) {
       super(props);
@@ -177,8 +163,8 @@ export default class SearchBox extends React.Component {
       return (
         <div className="content">
           <p>Find your friends</p>
-          <div className="container">
-            <section className="section" id="top">
+          <div className="container" id="top">
+            <section className="section">
                  <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
                   <List items={this.state.filtered} clicker={this.clicked} />
             </section>
@@ -190,7 +176,7 @@ export default class SearchBox extends React.Component {
           </div>
           <div className= "selected">
           </div>
-          <button id="enter" onClick={search}>Search</button>
+          
         </div>
       );
     }
@@ -199,11 +185,11 @@ export default class SearchBox extends React.Component {
         <div className="content">
           <div className="container">
             <section className="section">
-                 <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                 <input type="text" className="searchinput" onChange={this.handleChange} placeholder="Type..." />
             </section>
             <hr />
-            <section className="section">
-            </section>
+            {/* <section className="section">
+            </section> */}
           </div>
         </div>
       );
