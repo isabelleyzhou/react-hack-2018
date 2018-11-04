@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LocationProfile from './components/LocationProfile/LocationProfile';
+import LocationList from './components/LocationList';
 import './App.css';
 // import firebase, { config, login, logout } from './firebase-config';
 
@@ -25,7 +25,7 @@ class App extends Component {
             Log Out
           </a>
         </header> */}
-        <LocationProfile/>
+        <LocationList/>
       </div>
     );
   }
