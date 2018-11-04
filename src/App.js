@@ -8,8 +8,6 @@ const database = firebase.database();
 
 var snapshot = {};
 
-var current = null;
-
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
   document.getElementById("name").innerHTML = firstName;
@@ -22,11 +20,8 @@ function displayContent(user) {
     console.log(snap.val())
     snapshot = snap.val();
     console.log(newuser);
-    // console.log(snapshot["-LQR_IOOxaBpLEhMdw6o"].email);
-    // console.log(Object.keys(snapshot));
     Object.keys(snapshot).forEach(key => {
       console.log(snapshot[key].email);
-      // console.log(snapshot[key].email);
       if (snapshot[key].email == email) {
         newuser = false;
       }
@@ -40,18 +35,6 @@ function displayContent(user) {
       });
     }
   });
-  // databaseRef.on('value', snap => {
-  //   // console.log(snap.val())
-  //   snapshot = snap.val();
-  //   // console.log(snapshot["-LQR_IOOxaBpLEhMdw6o"].email);
-  //   // console.log(Object.keys(snapshot));
-  //   Object.keys(snapshot).forEach(key => {
-  //     // console.log(snapshot[key].email);
-  //     if (snapshot[key].email == email) {
-  //       newuser = false;
-  //     }
-  //   });
-  // });
 }
 
 class App extends Component {
