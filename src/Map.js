@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import GoogleMapsReact from 'google-maps-react';
+import GetLocation from './Geolocate.js';
+
  
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
@@ -46,11 +47,10 @@ class SimpleMap extends Component {
       let marker = new maps.Marker({
         position: this.state.center,
         map,
-        draggable: true,
         title: 'Hello World!'
       });
 
-      var infowindow =  new maps.InfoWindow({});
+      var infowindow =  new maps.InfoWindow({content: 'helloooo'});
       console.log();
       let count = 0;
       for (let key in this.state.other_friends) {
@@ -63,7 +63,6 @@ class SimpleMap extends Component {
         });
     maps.event.addListener(marker, 'click', (function (marker, count) {
           return function () {
-            infowindow.setContent(this.state.other_friends[count]);
             infowindow.open(map, marker);
           }
         })(marker, count));
