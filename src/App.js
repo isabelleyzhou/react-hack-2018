@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
 import Profile from './Profile';
 import List from './List';
@@ -44,9 +45,23 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Profile />
-        <List />
+      <div className="App">
+        {/* <Map/>
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p id="name">
+            {login(displayContent)}
+          </p>
+          <a
+            onClick={logout}
+            className="App-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Log Out
+          </a>
+        </header> */}
+        <Map />
       </div>
     );
   }

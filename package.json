@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.5.4",
     "firebase": "^5.5.7",
+    "google-map-react": "^1.0.9",
+    "google-maps-react": "^2.0.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.1.1"
+    "react-geolocated": "^2.4.0",
+    "react-geolocation": "^1.0.4",
+    "react-redux": "^5.1.0",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
