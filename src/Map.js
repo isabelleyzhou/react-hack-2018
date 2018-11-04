@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import GetLocation from './Geolocate.js';
 
- 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
+  
 class SimpleMap extends Component {
 
   constructor(){
@@ -23,12 +20,10 @@ class SimpleMap extends Component {
       location.getCurrentPosition((position) => {
         lt = position.coords.latitude;
         ln = position.coords.longitude;
-        console.log(lt);
-        console.log(ln);
         self.setState ({
           loaded: true,
-          latitude: 48.8566,
-          longitude: 2.3522,
+          latitude: lt,
+          longitude: ln,
           center: {
             lat: lt,
             lng: ln
@@ -41,7 +36,27 @@ class SimpleMap extends Component {
         });
       })
     }
+
+    this.findMiddleRestaurants = this.findMiddleRestaurants.bind(this);
   }
+
+    findMiddleRestaurants() {
+      let count = 1;
+      let x = this.state.latitude;
+      let y = this.state.longitude;
+      for (let key in this.state.other_friends) {
+        let val = this.state.other_friends[key];
+        x += val[0];
+        y += val[1];
+        count += 1;
+      }
+      x = x / count;
+      y = y / count;
+      if (!isNaN(x) && !isNaN(y)) {
+        console.log(x);
+        console.log(y);
+      }
+    }
 
     renderMarkers(map, maps) {
       let marker = new maps.Marker({
@@ -52,11 +67,9 @@ class SimpleMap extends Component {
       });
 
       var infowindow =  new maps.InfoWindow({content: 'helloooo'});
-      console.log();
       let count = 0;
       for (let key in this.state.other_friends) {
         let val = this.state.other_friends[key];
-        console.log(val);
         marker = new maps.Marker({
           position: new maps.LatLng(val[0], val[1]),
           map: map,
@@ -69,7 +82,6 @@ class SimpleMap extends Component {
         })(marker, count));
         count += 1;
       }
-      
   }
  
   render() {
@@ -87,7 +99,7 @@ class SimpleMap extends Component {
           </GoogleMapReact>:
           null
         }
-        
+        {this.findMiddleRestaurants()}
       </div>
     );
   }
