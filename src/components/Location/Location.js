@@ -31,6 +31,7 @@ class Location extends Component {
     const {phone} = this.props;
     const {rating} = this.props;
     const {price} = this.props;
+    const {coordinates} = this.props;
     const {modalIsOpen} = this.state;
     
     

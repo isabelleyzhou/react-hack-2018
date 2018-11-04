@@ -44,6 +44,7 @@ class LocationList extends Component {
       let ratings;
       let phones;
       let prices;
+      let coordinateslist;
       for (let i = 0; i < payload["businesses"].length; i += 1) {
         names = payload["businesses"][i]["name"];
         images = payload["businesses"][i]["image_url"];
@@ -53,7 +54,7 @@ class LocationList extends Component {
         prices = payload["businesses"][i]["price"];
         distances = (payload["businesses"][i]["distance"]/225).toFixed(2);
         this.setState({
-          locations: this.state.locations.concat(<Location image={images} locationName={names} number={numbers} milesAway={distances} phone={phones} rating={ratings} price={prices}/>)
+          locations: this.state.locations.concat(<Location image={images} locationName={names} number={numbers} milesAway={distances} phone={phones} rating={ratings} price={prices} coordinates={coordinateslist}/>)
         })
 
       }
