@@ -79,7 +79,7 @@ class SimpleMap extends Component {
       <div style={{ height: '100vh', width: '100%' }}>
         {
           this.state.loaded ?
-          <GoogleMapReact
+            <GoogleMapReact
             bootstrapURLKeys={{ key: 'AIzaSyAsKbRzIYNhjUhLqWmH-mbynyNFIFkhd3Y' }}
             center={this.state.center}
             zoom={this.state.zoom}
