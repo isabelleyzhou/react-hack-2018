@@ -30,3 +30,24 @@
     transform: rotate(360deg);
   }
 }
+
+#dp {
+  border-radius: 100%;
+  width: 20vh;
+}
+
+.Profile {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(24px + 2vmin);
+  color: white;
+}
+
+button {
+  color: lightseagreen;
+  font-size: calc(12px + 2vmin);
+}

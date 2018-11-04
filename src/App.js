@@ -8,6 +8,8 @@ const database = firebase.database();
 
 var snapshot = {};
 
+var current = null;
+
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
   document.getElementById("name").innerHTML = firstName;
@@ -16,49 +18,50 @@ function displayContent(user) {
   const email = user.email;
   const databaseRef = database.ref().child('users');
   let newuser = true;
-  databaseRef.on('value', snap => {
+  databaseRef.once('value').then(snap => {
     console.log(snap.val())
     snapshot = snap.val();
+    console.log(newuser);
     // console.log(snapshot["-LQR_IOOxaBpLEhMdw6o"].email);
     // console.log(Object.keys(snapshot));
     Object.keys(snapshot).forEach(key => {
+      console.log(snapshot[key].email);
       // console.log(snapshot[key].email);
       if (snapshot[key].email == email) {
         newuser = false;
       }
     });
+    console.log(newuser);
+    if (newuser) {
+      databaseRef.push({
+        username: username,
+        imgurl: imgurl,
+        email: email
+      });
+    }
   });
-  if (newuser) {
-    databaseRef.push({
-      username: username,
-      imgurl: imgurl,
-      email: email
-    });
-  }
+  // databaseRef.on('value', snap => {
+  //   // console.log(snap.val())
+  //   snapshot = snap.val();
+  //   // console.log(snapshot["-LQR_IOOxaBpLEhMdw6o"].email);
+  //   // console.log(Object.keys(snapshot));
+  //   Object.keys(snapshot).forEach(key => {
+  //     // console.log(snapshot[key].email);
+  //     if (snapshot[key].email == email) {
+  //       newuser = false;
+  //     }
+  //   });
+  // });
 }
 
 class App extends Component {
+  componentDidMount() {
+    login(displayContent)
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p id="name">
-            {login(displayContent)}
-          </p>
-          <a
-            onClick={logout}
-            className="App-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Log Out
-          </a>
-        </header>
-        <p id="lol">
-
-        </p>
-        {/* <Profile username={username} imgurl={imgurl}/> */}
+      <div>
+        <Profile />
       </div>
     );
   }
