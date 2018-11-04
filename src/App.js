@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
-import GetLocation from './Geolocate.js';
 
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
