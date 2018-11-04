@@ -1,4 +1,5 @@
 import React from 'react';
+import './Friend.css';
 
 class Friend extends React.Component {  
     constructor(props) {

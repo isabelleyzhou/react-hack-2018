@@ -192,11 +192,15 @@ class LocationList extends Component {
   render() {
     return (
       <div className="llcontainer">
-        <h1>
-          Where2Meet
-        </h1>
-        <SearchBox/>
-        <button id="enter" onClick={this.search}>Search</button>
+        <div className="topcontainer">
+          <h1 className="sitetitle">
+            Where2Meet
+          </h1>
+          <SearchBox/>
+        </div>
+        <div className="entercontainer">
+          <button id="enter" onClick={this.search}>Search</button>
+        </div>
         {this.findMiddleRestaurants()}
         {
           (this.state.loaded1 && this.state.buttonclicked) ?

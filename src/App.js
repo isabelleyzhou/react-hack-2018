@@ -47,7 +47,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button id="logout" onClick={logout}>Log Out</button>
+        <div className="logoutwrapper">
+          <button className="logout" id="logout" onClick={logout}>Log Out</button>
+        </div>
         <Router>
           <Switch>
             <Route exact path="/" component={LocationList} />
