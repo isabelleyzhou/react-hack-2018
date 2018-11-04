@@ -20,8 +20,9 @@ export function login(userFunction) {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithRedirect(provider);
       }
+      return user;
     }
-    firebase.auth().onAuthStateChanged(newLoginHappened);
+    return firebase.auth().onAuthStateChanged(newLoginHappened);
 }
 
 export function logout() {

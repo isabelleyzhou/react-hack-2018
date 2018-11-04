@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LocationList from './components/LocationList';
 import './App.css';
 import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
+import Profile from './Profile';
+import List from './List';
+
+const database = firebase.database();
+
+var snapshot = {};
 
 const database = firebase.database();
 
@@ -44,6 +50,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <header className="App-header">
         {/* <Map/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -60,7 +67,7 @@ class App extends Component {
           </a>
         </header> */}
         <button onClick={logout}>Log Out</button>
-        <Map />
+        <LocationList/>
       </div>
     );
   }

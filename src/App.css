@@ -54,4 +54,40 @@
 
 ul {
   min-height: 12.5vh;
+
+#dp {
+  border-radius: 100%;
+  width: 20vh;
+}
+
+.dp {
+  border-radius: 100%;
+  width: 6vh;
+}
+
+.Profile {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(24px + 2vmin);
+  color: white;
+}
+
+button {
+  color: lightseagreen;
+  font-size: calc(12px + 2vmin);
+}
+
+#left {
+  text-align: center;
+}
+
+.User {
+  text-align: center;
+  display: inline-block;
+  font-size: calc(6px + 2vmin);
+  margin: 2vh;
 }

@@ -1,0 +1,180 @@
+.Location-container {
+    background-size: 500px 300px;
+    margin: 0 0 15px 0;
+    font-family: "Open Sans", sans-serif;
+    color:white;
+    text-align: left;
+}
+
+.locationName {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 3px 0;
+}
+
+.MilesAway {
+    font-size: 13px;
+}
+
+.picture {
+    width: 100%;
+    max-height: 220px;
+    overflow: hidden;
+    /* opacity: .7; */
+    filter: brightness(40%);
+}
+
+.overview-text {
+    margin: -100px 0 18px 20px;
+    position: relative;
+    text-align: left;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    opacity: 1;
+}
+
+.ModalLocationName {
+    font-weight: 400;
+}
+
+.ModalMilesAway {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.header {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: #194483;
+    color: white;
+    text-align: left;
+    padding: 18% 5% 9% 8%;
+    box-shadow: 5px 5px 10px black;
+}
+
+
+.button {
+    background-color: #FFC85E;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: white;
+    border-radius: 20px;
+    border: 0px;
+    padding: 10px 60px;
+    box-shadow: 3px 3px 10px gray;
+    position: relative;
+}
+
+.button:focus {
+    outline: none;
+}
+
+/* .pic-darken {
+    background: black;
+    z-index: 1;
+} */
+.pic {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    /* opacity: .7; */
+    filter:blur(1px) brightness(40%);
+    box-shadow: 0 2px 1px gray;
+}
+
+.pic-darken {
+    padding: 0;
+}
+
+.Modaloverview-text {
+    margin: -100px 0 27px 0;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    opacity: 1;
+    text-shadow: 5px 5px 5px black;
+}
+
+.LocationName {
+    font-weight: 400;
+}
+
+.MilesAway {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.bigcontainer {
+    display: inline;
+}
+
+.leftheaders{
+    display: inline-block;
+    margin-left: 15px;
+    height: auto;
+    width: 150px;
+    text-align: left;  
+}
+
+.Open {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.rightside {
+    display: inline-block;
+    height: auto;
+    width: 120px;
+    text-align: right;
+}
+
+.heading {
+    display: inline-block;
+    font-weight: 300;
+    font-family: "Open Sans", sans-serif;
+    line-height: -1;
+    font-size: 16px;
+    margin-top: 9px;
+}
+
+.PhoneNumber {
+    display: inline-block;
+    text-align: right;
+    margin-right:10px;
+    line-height: 1.5;
+    font-weight: 300;
+
+}
+
+.modal {
+    position: relative;
+    background-color:white;
+    margin: 90px 20px 0 20px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.modal:focus {
+    outline: none;
+}
+.pic {
+    margin: 0 auto;
+}
+
+.number {
+    background-color: #FFC85E;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    text-shadow: 0px 0px 0px;
+    border-radius: 100px;
+    color: white;
+    margin-bottom: 5px;
+}
