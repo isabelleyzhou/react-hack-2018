@@ -8,9 +8,6 @@ import SearchBox from '../SearchBox.js';
 class LocationList extends Component {
   constructor() {
     super();
-    let location = null;
-    let lt = 0;
-    let ln = 0;
     this.state = {
       names: [],
       ratings: [],
@@ -23,37 +20,10 @@ class LocationList extends Component {
       buttonclicked: false
     };
     if (window.navigator && window.navigator.geolocation) {
-      location = window.navigator.geolocation;
+      this.setState({
+        location : window.navigator.geolocation
+      });
     }
-    if (location){
-      let self = this
-      location.getCurrentPosition((position) => {
-        let x1 = 37.77;
-        let dx1 = Math.random()*0.02;
-        let y1 = -122.25;
-        let dy1 = Math.random()*0.02;
-        let x2 = 37.77;
-        let dx2 = Math.random()*0.02;
-        let y2 = -122.25;
-        let dy2 = Math.random()*0.02;
-        lt = position.coords.latitude;
-        ln = position.coords.longitude;
-        self.setState ({
-          loaded1: true,
-          latitude: lt,
-          longitude: ln,
-          center: {
-            lat: lt,
-            lng: ln
-          },
-          other_friends: {
-            martinez: [x1 + dx1, y1 - dy1],
-            soda: [x2 + dx2, y2 - dy2]
-          },
-          zoom: 15
-        });
-      }
-      )}
     this.search = this.search.bind(this);
     this.findMiddleRestaurants= this.findMiddleRestaurants.bind(this); 
   }
@@ -88,22 +58,59 @@ class LocationList extends Component {
       y += val[1];
       count += 1;
     }
+    console.log(this.state.latitude);
     x = x / count;
     y = y / count;
     if (!isNaN(x) && !isNaN(y)) {
       let locations = this.state.locations;
       console.log(locations);
-    }
+    };
+    this.setState({
+      lat: x,
+      lon: y
+    });
+    console.log(x);
+    console.log(y);
   }
 
 
   async componentDidMount() {
+    if (this.state.location) {
+      this.state.location.getCurrentPosition((position) => {
+        let x1 = 37.87;
+        let dx1 = Math.random()*0.005;
+        let y1 = -122.25;
+        let dy1 = Math.random()*0.02;
+        let x2 = 37.87;
+        let dx2 = Math.random()*0.005;
+        let y2 = -122.25;
+        let dy2 = Math.random()*0.02;
+        let lt = position.coords.latitude;
+        let ln = position.coords.longitude;
+        this.setState ({
+          loaded1: true,
+          latitude: lt,
+          longitude: ln,
+          center: {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          },
+          other_friends: {
+            martinez: [x1 + dx1, y1 - dy1],
+            soda: [x2 + dx2, y2 - dy2]
+          },
+          zoom: 15
+        });
+      }
+      )}
+    this.findMiddleRestaurants();
     const RapidAPI = await require('rapidapi-connect');
     const rapid = await new RapidAPI("default-application_5bde08cde4b09efa5fbce273", "a3092fd1-0bb6-447e-bc02-287407fe8392");
 
     rapid.call('YelpAPI', 'getBusinesses', {
       accessToken: 'f8NSZ7Sz4Ik5GGmMJ5MesAO15azeGlsGM-yT6wlU-scRpc1Q3whzwjal0T34QC_oXvXjwRoXu0sX4OIboGcjBm4JrHiWr8RKQA7YYUe-3n7E6eDWESxzKei3EgjeW3Yx',
-      coordinate: '37.87097, -122.2559',
+      // coordinate: '37.87097, -122.2559',
+      coordinate: this.state.lat + ', ' + this.state.lon,
       limit: '3',
       sortBy: 'distance'
 
@@ -201,7 +208,6 @@ class LocationList extends Component {
         <div className="entercontainer">
           <button id="enter" onClick={this.search}>Search</button>
         </div>
-        {this.findMiddleRestaurants()}
         {
           (this.state.loaded1 && this.state.buttonclicked) ?
           <div style={{ height: "40vh" }}>
