@@ -18,13 +18,13 @@ export function login(userFunction) {
         userFunction(user);
       } else {
         var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithRedirect(provider);
+        firebase.auth().signInWithPopup(provider);
       }
+      return user;
     }
-    firebase.auth().onAuthStateChanged(newLoginHappened);
+    return firebase.auth().onAuthStateChanged(newLoginHappened);
 }
 
-export function logout(user, userFunction=null) {
+export function logout(user) {
   firebase.auth().signOut();
-  userFunction(user);
 }
