@@ -1,5 +1,5 @@
-.Location-div {
-    background-image: url(mcdonalds.jpg);
+.Location-container {
+    /* background-image: url(mcdonalds.jpg); */
     background-size: 500px 300px;
     margin: 0 0 15px 0;
     padding: 120px 10px 15px 15px;
