@@ -28,6 +28,14 @@ class LocationList extends Component {
     if (location){
       let self = this
       location.getCurrentPosition((position) => {
+        let x1 = 37.77;
+        let dx1 = Math.random()*0.02;
+        let y1 = -122.25;
+        let dy1 = Math.random()*0.02;
+        let x2 = 37.77;
+        let dx2 = Math.random()*0.02;
+        let y2 = -122.25;
+        let dy2 = Math.random()*0.02;
         lt = position.coords.latitude;
         ln = position.coords.longitude;
         self.setState ({
@@ -39,8 +47,8 @@ class LocationList extends Component {
             lng: ln
           },
           other_friends: {
-            martinez: [37.8668, -122.2576],
-            soda: [37.8756, -122.2588]
+            martinez: [x1 + dx1, y1 - dy1],
+            soda: [x2 + dx2, y2 - dy2]
           },
           zoom: 15
         });
