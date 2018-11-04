@@ -123,6 +123,7 @@ class SearchBox extends React.Component {
       if(this.state.loaded){
       return (
         <div className="content">
+          <p>Find your friends</p>
           <div className="container">
             <section className="section">
                  <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
@@ -144,14 +145,10 @@ class SearchBox extends React.Component {
           <div className="container">
             <section className="section">
                  <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
-                 {console.log("outside", this.state.filtered)}
             </section>
             <hr />
             <section className="section">
-                   {/* <List items={this.state.filtered} delete={this.removeItem} /> */}
             </section>
-          </div>
-          <div className= "selected">
           </div>
         </div>
       );
