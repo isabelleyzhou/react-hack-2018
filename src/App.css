@@ -10,11 +10,12 @@
 
 .logout {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   background: none;
   color: white;
-  border: none;
+  border-radius: 18px;
+  font-size: 14px;
+  border: 1px solid white;
+  padding: 6px 20px;
 }
 
 /* .App-header {
