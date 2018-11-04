@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import GetLocation from './Geolocate.js';
 import SearchBox from './SearchBox.js';
 
  
@@ -42,7 +41,27 @@ class Map extends Component {
         });
       })
     }
+
+    this.findMiddleRestaurants= this.findMiddleRestaurants.bind(this); 
   }
+
+    findMiddleRestaurants() {
+      let count = 1;
+      let x = this.state.latitude;
+      let y = this.state.longitude;
+      for (let key in this.state.other_friends) {
+        let val = this.state.other_friends[key];
+        x += val[0];
+        y += val[1];
+        count += 1;
+      }
+      x = x / count;
+      y = y / count;
+      if (!isNaN(x) && !isNaN(y)) {
+        console.log(x);
+        console.log(y);
+      }
+    }
 
     renderMarkers(map, maps) {
       let marker = new maps.Marker({
