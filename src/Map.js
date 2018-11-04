@@ -15,11 +15,9 @@ class SimpleMap extends Component {
       loaded: false
     };
     if (window.navigator && window.navigator.geolocation) {
-      console.log('hello');
       location = window.navigator.geolocation;
     }
     if (location){
-      console.log('hi')
       let self = this
       location.getCurrentPosition((position) => {
         lt = position.coords.latitude;
@@ -34,44 +32,45 @@ class SimpleMap extends Component {
             lat: lt,
             lng: ln
           },
+          other_friends: {
+            centera: [37.8710, -122.2508],
+            centerb: [37.8756, -122.2588]
+          },
           zoom: 11
         });
       })
     }
-    console.log('here')
-    
-
-    // this.checkSubmit = this.checkSubmit.bind(this);
   }
 
-  //   componentDidMount(){
-  //     let location = null;
-  //     let latitude = null;
-  //     let longitude = null;
-  //     if (window.navigator && window.navigator.geolocation) {
-  //         location = window.navigator.geolocation
-  //     }
-  //     if (location){
-  //         location.getCurrentPosition((position) => {
-  //             latitude = position.coords.latitude;
-  //             longitude= position.coords.longitude;
-  //             this.setState({latitude: latitude, longitude: longitude, center: {latitude, longitude}});
-  //         })
-  //     }
-  // }
-
-    // checkSubmit(e) {
-    //   if (e && e.charCode === 13) {
-    //     this.getMyLocation();
-    //   }
-    // }
     renderMarkers(map, maps) {
       let marker = new maps.Marker({
         position: this.state.center,
         map,
+        draggable: true,
         title: 'Hello World!'
       });
-    }
+
+      var infowindow =  new maps.InfoWindow({});
+      console.log();
+      let count = 0;
+      for (let key in this.state.other_friends) {
+        let val = this.state.other_friends[key];
+        console.log(val);
+        marker = new maps.Marker({
+          position: new maps.LatLng(val[0], val[1]),
+          map: map,
+          title: val
+        });
+    maps.event.addListener(marker, 'click', (function (marker, count) {
+          return function () {
+            infowindow.setContent(this.state.other_friends[count]);
+            infowindow.open(map, marker);
+          }
+        })(marker, count));
+        count += 1;
+      }
+      
+  }
  
   render() {
     return (
@@ -88,8 +87,6 @@ class SimpleMap extends Component {
           </GoogleMapReact>:
           null
         }
-        
-
         
       </div>
     );
