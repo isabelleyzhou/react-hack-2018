@@ -1,25 +1,10 @@
 import React from 'react';
 import List from './List.js';
-import firebase, { login } from './firebase-config';
+import firebase from './firebase-config';
 
 const databaseRef = firebase.database().ref().child('users');
 
-function listUsers(user) {
-  databaseRef.once('value').then(snap => {
-      let snapshot = snap.val();
-      console.log('Text');
-      Object.keys(snapshot).forEach(key => {
-        const img = snapshot[key].imgurl;
-        const name = snapshot[key].username.split(' ')[0];
-        // html += '<div class="User"><img src=' + img + ' alt="oops" class="dp"/><p><strong>' + name + '</strong></p></div>';
-        list2.push({
-          name: name,
-          img: img
-        });
-      });
-      console.log(list2);
-  });
-}
+var currentUser;
 
 // const list = [
 //   {
@@ -28,10 +13,23 @@ function listUsers(user) {
 //   }
 // ];
 
-const list = ['Richard', 'Bianca', 'Isabelle'];
-const list2 = [];
+const list = [];
 
-class SearchBox extends React.Component {
+let top = true;
+
+function search() {
+  if (top) {
+    document.getElementById("top").style.display = "none";
+    document.getElementById("enter").innerHTML = "Back";
+    top = false;
+  } else {
+    document.getElementById("top").style.display = "block";
+    document.getElementById("enter").innerHTML = "Search";
+    top = true;
+  }
+}
+
+export default class SearchBox extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -46,11 +44,30 @@ class SearchBox extends React.Component {
     }
 
     componentDidMount() {
-      this.setState({
-        filtered: list,
-        loaded: true
-      });
-      login(listUsers);
+      databaseRef.once('value').then(snap => {
+        currentUser = firebase.auth().currentUser.email;
+        let snapshot = snap.val();
+        console.log('Text');
+        Object.keys(snapshot).forEach(key => {
+          const img = snapshot[key].imgurl;
+          const name = snapshot[key].username.split(' ')[0];
+          const email = snapshot[key].email;
+          // html += '<div class="User"><img src=' + img + ' alt="oops" class="dp"/><p><strong>' + name + '</strong></p></div>';
+          if (email !== currentUser) {
+            list.push({
+              name: name,
+              img: img,
+              email: email
+            });
+          }
+          this.setState({
+            filtered: list,
+            loaded: true
+          });
+        });
+        console.log(currentUser);
+        console.log(list);
+      })
     }
   
     // componentWillReceiveProps(nextProps) {
@@ -59,36 +76,43 @@ class SearchBox extends React.Component {
     //   });
     // }
 
-      clicked(name){
+      clicked(item){
         let proceed=true;
         for (var i=0; i< this.state.selected.length; i++){
-          if (name == this.state.selected[i]){
+          if (item.email === this.state.selected[i].email){
             proceed=false;
           }
         }
         if (proceed){
           this.setState({
-            selected: this.state.selected.concat(name)
+            selected: this.state.selected.concat({
+              name: item.name,
+              img: item.img,
+              email: item.email
+            })
           })
         }
       }
       
       handleChange(e) {
-          // Variable to hold the original version of the list
-      let currentList = [];
-          // Variable to hold the filtered list before putting into state
-      let newList = [];
-          
-          // If the search bar isn't empty
-      if (e.target.value !== "") {
-              // Assign the original list to currentList
+            // Variable to hold the original version of the list
+        let currentList = [];
+            // Variable to hold the filtered list before putting into state
+        let newList = [];
+            
+            // If the search bar isn't empty
+        if (e.target.value !== "") {
+                // Assign the original list to currentList
+          currentList = list;     
         currentList = list;
-              
+          currentList = list;     
+        currentList = list;
+          currentList = list;     
               // Use .filter() to determine which items should be displayed
               // based on the search terms
         newList = currentList.filter(item => {
                   // change current item to lowercase
-          const lc = item.toLowerCase();
+          const lc = item.name.toLowerCase();
                   // change search term to lowercase
           const filter = e.target.value.toLowerCase();
                   // check to see if the current list item includes the search term
@@ -154,7 +178,7 @@ class SearchBox extends React.Component {
         <div className="content">
           <p>Find your friends</p>
           <div className="container">
-            <section className="section">
+            <section className="section" id="top">
                  <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
                   <List items={this.state.filtered} clicker={this.clicked} />
             </section>
@@ -162,9 +186,11 @@ class SearchBox extends React.Component {
             <section className="section">
                    <List items={this.state.selected} clicker={this.removeItem} />
             </section>
+            <hr />
           </div>
           <div className= "selected">
           </div>
+          <button id="enter" onClick={search}>Search</button>
         </div>
       );
     }
@@ -184,6 +210,4 @@ class SearchBox extends React.Component {
     }
   }
   }
-
-  export default SearchBox;
   

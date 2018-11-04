@@ -59,6 +59,7 @@ class App extends Component {
             Log Out
           </a>
         </header> */}
+        <button onClick={logout}>Log Out</button>
         <Map />
       </div>
     );

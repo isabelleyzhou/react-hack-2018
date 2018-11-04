@@ -10,7 +10,8 @@ class List extends React.Component {
                 {/* <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." /> */}
                     <ul>
                         {this.props.items.map(item => (
-                            <Friend name={item}
+                            <Friend name={item.name}
+                                    img={item.img}
                                     className="delete"
                                     clicker={() => this.props.clicker(item)}
                                     />
