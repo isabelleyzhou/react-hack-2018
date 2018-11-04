@@ -1,0 +1,9 @@
+.header {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    background-color: #194483;
+    color: white;
+    text-align: left;
+    padding: 18% 5% 9% 8%;
+    box-shadow: 5px 5px 10px black;
+}

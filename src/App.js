@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LocationList from './components/LocationList';
 import './App.css';
-import firebase, { config, login, logout } from './firebase-config';
+// import firebase, { config, login, logout } from './firebase-config';
 
-function displayContent(user) {
-  const firstName = user.displayName.split(' ')[0];
-  document.getElementById("name").innerHTML = firstName;
-}
+// function displayContent(user) {
+//   const firstName = user.displayName.split(' ')[0];
+//   document.getElementById("name").innerHTML = firstName;
+// }
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+        {/* <header className="App-header">
           <p id="name">
             {login(displayContent)}
           </p>
@@ -25,7 +24,8 @@ class App extends Component {
           >
             Log Out
           </a>
-        </header>
+        </header> */}
+        <LocationList/>
       </div>
     );
   }

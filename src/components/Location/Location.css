@@ -1,0 +1,19 @@
+.Location-div {
+    background-image: url(mcdonalds.jpg);
+    background-size: 500px 300px;
+    margin: 0 0 15px 0;
+    padding: 120px 10px 15px 15px;
+    font-family: "Open Sans", sans-serif;
+    color:white;
+    text-align: left;
+}
+
+.locationName {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 3px 0;
+}
+
+.milesAway {
+    font-size: 13px;
+}
