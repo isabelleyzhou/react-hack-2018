@@ -1,7 +1,35 @@
 import React from 'react';
 import List from './List.js';
+import firebase, { login } from './firebase-config';
 
-const list= ["Bianca", "Richard", "Kelvin"];
+const databaseRef = firebase.database().ref().child('users');
+
+function listUsers(user) {
+  databaseRef.once('value').then(snap => {
+      let snapshot = snap.val();
+      console.log('Text');
+      Object.keys(snapshot).forEach(key => {
+        const img = snapshot[key].imgurl;
+        const name = snapshot[key].username.split(' ')[0];
+        // html += '<div class="User"><img src=' + img + ' alt="oops" class="dp"/><p><strong>' + name + '</strong></p></div>';
+        list2.push({
+          name: name,
+          img: img
+        });
+      });
+      console.log(list2);
+  });
+}
+
+// const list = [
+//   {
+//     name: 'Richard',
+//     img: 'lmaoooo.jpg'
+//   }
+// ];
+
+const list = ['Richard', 'Bianca', 'Isabelle'];
+const list2 = [];
 
 class SearchBox extends React.Component {
     constructor(props) {
@@ -22,6 +50,7 @@ class SearchBox extends React.Component {
         filtered: list,
         loaded: true
       });
+      login(listUsers);
     }
   
     // componentWillReceiveProps(nextProps) {
@@ -112,8 +141,8 @@ class SearchBox extends React.Component {
     delete(x, lst){
       let newlst=[];
       for (var i=0; i< lst.length; i++){
-        if (lst[i]!=x){
-          newlst.concat(lst[i]);
+        if (lst[i] !==x){
+          newlst.push(lst[i]);
         }
       }
       return newlst;
