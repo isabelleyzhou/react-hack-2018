@@ -58,15 +58,15 @@ class Location extends Component {
         <div className="Open">Open</div>
         <div className='bigcontainer'>
           <div className='leftheaders'>
-            <div className='heading'>Rating:</div>
-            <div className='heading'>Phone Number:</div>
-            <div className='heading'>Price:</div>
+            <div className='heading'>Rating:        {rating} stars</div>
+            <div className='heading'>Phone Number:  {phone} </div>
+            <div className='heading'>Price:         {price} </div>
           </div>
-          <div className='rightside'>
+          {/* <div className='rightside'>
             <div className="PhoneNumber">{rating} stars</div>
             <div className="PhoneNumber">{phone}</div>
             <div className="PhoneNumber">{price}</div>
-          </div>
+          </div> */}
         </div>
         
         </Modal>

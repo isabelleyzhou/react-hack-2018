@@ -8,3 +8,38 @@
     padding: 18% 5% 9% 8%;
     box-shadow: 5px 5px 10px black;
 }
+
+.sitetitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: #194483;
+    color: white;
+}
+
+.topcontainer {
+    background-color: #194483;
+}
+
+#enter {
+    -webkit-appearance: none;
+    background-color: #FFC85E;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    padding: 12px 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+#enter:focus {
+    outline: none;
+}
+
+.entercontainer {
+    background-color: white;
+}
+
+.LocationList-div {
+    background-color: white;
+}
