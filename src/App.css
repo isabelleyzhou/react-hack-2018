@@ -51,3 +51,8 @@ button {
   color: lightseagreen;
   font-size: calc(12px + 2vmin);
 }
+
+.User {
+  text-align: center;
+  
+}

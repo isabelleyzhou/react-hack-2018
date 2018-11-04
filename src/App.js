@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import firebase, { config, login, logout } from './firebase-config';
 import Profile from './Profile';
+import List from './List';
 
 const database = firebase.database();
 
@@ -10,7 +11,7 @@ var snapshot = {};
 
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
-  document.getElementById("name").innerHTML = firstName;
+  document.getElementById("name").innerHTML = '<strong>' + firstName + '</strong>';
   const username = user.displayName;
   const imgurl = user.photoURL;
   const email = user.email;
@@ -45,6 +46,7 @@ class App extends Component {
     return (
       <div>
         <Profile />
+        <List />
       </div>
     );
   }
