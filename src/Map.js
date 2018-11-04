@@ -23,12 +23,10 @@ class Map extends Component {
       location.getCurrentPosition((position) => {
         lt = position.coords.latitude;
         ln = position.coords.longitude;
-        console.log(lt);
-        console.log(ln);
         self.setState ({
           loaded: true,
-          latitude: 48.8566,
-          longitude: 2.3522,
+          latitude: lt,
+          longitude: ln,
           center: {
             lat: lt,
             lng: ln
@@ -58,8 +56,6 @@ class Map extends Component {
       x = x / count;
       y = y / count;
       if (!isNaN(x) && !isNaN(y)) {
-        console.log(x);
-        console.log(y);
       }
     }
 
@@ -75,16 +71,31 @@ class Map extends Component {
       let count = 0;
       for (let key in this.state.other_friends) {
         let val = this.state.other_friends[key];
+        marker = new maps.Marker({
+          position: new maps.LatLng(val[0], val[1]),
+          map: map,
+          title: val
+        });
+        maps.event.addListener(marker, 'click', (function (marker, count) {
+          return function () {
+            infowindow.open(map, marker);
+        }
+        })(marker, count));
+        count += 1;
+      }
+
+      for (let key in this.state.restaurants) {
+        let val = this.state.other_friends[key];
         console.log(val);
         marker = new maps.Marker({
           position: new maps.LatLng(val[0], val[1]),
           map: map,
           title: val
         });
-    maps.event.addListener(marker, 'click', (function (marker, count) {
+        maps.event.addListener(marker, 'click', (function (marker, count) {
           return function () {
             infowindow.open(map, marker);
-          }
+        }
         })(marker, count));
         count += 1;
       }
@@ -107,6 +118,7 @@ class Map extends Component {
           </GoogleMapReact>:
           null
         }
+        {this.findMiddleRestaurants()}
         
       </div>
     );
