@@ -47,6 +47,7 @@ class SimpleMap extends Component {
       let marker = new maps.Marker({
         position: this.state.center,
         map,
+        label: 'you',
         title: 'Hello World!'
       });
 
