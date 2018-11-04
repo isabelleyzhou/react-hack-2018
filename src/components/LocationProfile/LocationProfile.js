@@ -9,9 +9,6 @@ class LocationProfile extends Component {
     return (
       <div className="LocationList-div">
         <div className="header">
-        {/* <NavLink to="/" className="ReturnArrow">
-          &#8592;
-        </NavLink> */}
         Meet at...
         </div>
         <div className="overview">

@@ -20,6 +20,7 @@ class LocationList extends Component {
       ratings: [],
       images: [],
       closed: [],
+      phones: [],
       distances: [],
       locations: []
     }
@@ -38,18 +39,21 @@ class LocationList extends Component {
     }).on('success', (payload)=>{
       let names;
       let images;
+      let numbers;
       let distances;
+      let ratings;
+      let phones;
+      let prices;
       for (let i = 0; i < payload["businesses"].length; i += 1) {
         names = payload["businesses"][i]["name"];
         images = payload["businesses"][i]["image_url"];
+        numbers = i+1;
+        ratings = payload["businesses"][i]["rating"];
+        phones = payload["businesses"][i]["phone"];
+        prices = payload["businesses"][i]["price"];
         distances = (payload["businesses"][i]["distance"]/225).toFixed(2);
         this.setState({
-          // names: this.state.names.concat(payload["businesses"][i]["name"]),
-          // ratings: this.state.ratings.concat(payload["businesses"][i]["rating"]),
-          // images: this.state.images.concat(payload["businesses"][i]["image_url"]),
-          // closed: this.state.closed.concat(payload["businesses"][i]["is_closed"]),
-          // distances: this.state.distances.concat(payload["businesses"][i]["distance"]),
-          locations: this.state.locations.concat(<Location image={images} locationName={names} milesAway={distances}/>)
+          locations: this.state.locations.concat(<Location image={images} locationName={names} number={numbers} milesAway={distances} phone={phones} rating={ratings} price={prices}/>)
         })
 
       }

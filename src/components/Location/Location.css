@@ -1,11 +1,11 @@
 .Location-container {
-    /* background-image: url(mcdonalds.jpg); */
     background-size: 500px 300px;
     margin: 0 0 15px 0;
     /* padding: 120px 10px 15px 15px; */
     font-family: "Open Sans", sans-serif;
     color:white;
     text-align: left;
+    z-index: -100;
 }
 
 .locationName {
@@ -14,7 +14,7 @@
     margin: 3px 0;
 }
 
-.milesAway {
+.MilesAway {
     font-size: 13px;
 }
 
@@ -40,6 +40,69 @@
     text-shadow: 5px 5px 5px black;
 }
 
+.ModalLocationName {
+    font-weight: 400;
+}
+
+.ModalMilesAway {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.header {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: #194483;
+    color: white;
+    text-align: left;
+    padding: 18% 5% 9% 8%;
+    box-shadow: 5px 5px 10px black;
+}
+
+
+.button {
+    background-color: #FFC85E;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    color: white;
+    border-radius: 20px;
+    border: 0px;
+    padding: 10px 60px;
+    box-shadow: 3px 3px 10px gray;
+    z-index: 100;
+    position: relative;
+}
+
+.button:focus {
+    outline: none;
+}
+
+/* .pic-darken {
+    background: black;
+    z-index: 1;
+} */
+.pic {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    /* opacity: .7; */
+    z-index: -1;
+    filter:blur(1px) brightness(40%);
+}
+
+.Modaloverview-text {
+    margin: -100px 0 27px 0;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    opacity: 1;
+    text-shadow: 5px 5px 5px black;
+}
+
 .LocationName {
     font-weight: 400;
 }
@@ -47,4 +110,60 @@
 .MilesAway {
     font-weight: 300;
     font-size: 16px;
+}
+
+
+/* .details {
+    margin-top: 30px;
+    margin-left: 30px;
+    font-weight: 300;
+    text-align: left;
+    font-size: 14px;
+} */
+
+.bigcontainer {
+    display: inline;
+    
+}
+
+.leftheaders{
+    display: inline-block;
+    margin-left: 30px;
+    height: auto;
+    width: 150px;
+    text-align: left;  
+}
+
+.Open {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.rightside {
+    display: inline-block;
+    height: auto;
+    width: 150px;
+    text-align: right;
+}
+.heading {
+    display: inline-block;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    line-height: -1;
+    font-size: 16px;
+    margin-top: 9px;
+}
+
+.PhoneNumber {
+    display: inline-block;
+    text-align: right;
+    margin-right:10px;
+    line-height: 1.5;
+
+}
+
+.modal {
+    position: relative;
+    background-color:white;
+    z-index: 100;
 }
