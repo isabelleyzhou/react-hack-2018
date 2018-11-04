@@ -10,10 +10,6 @@ const database = firebase.database();
 
 var snapshot = {};
 
-const database = firebase.database();
-
-var snapshot = {};
-
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
   // document.getElementById("name").innerHTML = '<strong>' + firstName + '</strong>';
@@ -50,22 +46,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-        {/* <Map/>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p id="name">
-            {login(displayContent)}
-          </p>
-          <a
-            onClick={logout}
-            className="App-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Log Out
-          </a>
-        </header> */}
         <button onClick={logout}>Log Out</button>
         <LocationList/>
       </div>
