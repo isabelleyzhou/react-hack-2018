@@ -25,6 +25,6 @@ export function login(userFunction) {
     return firebase.auth().onAuthStateChanged(newLoginHappened);
 }
 
-export function logout(user) {
+export function logout() {
   firebase.auth().signOut();
 }

@@ -9,7 +9,10 @@ class Friend extends React.Component {
     }
     render() {
         return (
-            <button onClick={() => this.props.clicker()}>{this.props.name}</button>
+            <button onClick={() => this.props.clicker()}>
+                <img className="dp" src={this.props.img} alt="lmao" />
+                <p>{this.props.name}</p>
+            </button>
         )
     }
 }

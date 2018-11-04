@@ -10,9 +10,13 @@ const database = firebase.database();
 
 var snapshot = {};
 
+const database = firebase.database();
+
+var snapshot = {};
+
 function displayContent(user) {
   const firstName = user.displayName.split(' ')[0];
-  document.getElementById("name").innerHTML = '<strong>' + firstName + '</strong>';
+  // document.getElementById("name").innerHTML = '<strong>' + firstName + '</strong>';
   const username = user.displayName;
   const imgurl = user.photoURL;
   const email = user.email;
@@ -62,8 +66,8 @@ class App extends Component {
             Log Out
           </a>
         </header> */}
+        <button onClick={logout}>Log Out</button>
         <LocationList/>
-        {/* <Map /> */}
       </div>
     );
   }
