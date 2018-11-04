@@ -8,7 +8,6 @@ class List extends React.Component {
         return (
             <div>
                 {/* <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." /> */}
-                    <ul>
                         {this.props.items.map(item => (
                             <Friend name={item.name}
                                     img={item.img}
@@ -16,7 +15,6 @@ class List extends React.Component {
                                     clicker={() => this.props.clicker(item)}
                                     />
                         ))}
-                    </ul>
                 </div>
         )
     }

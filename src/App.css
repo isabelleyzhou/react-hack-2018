@@ -92,3 +92,25 @@ button {
   font-size: calc(6px + 2vmin);
   margin: 2vh;
 }
+
+#map {
+  display: none;
+}
+
+.caption {
+  margin-bottom: 0;
+}
+
+.friend {
+  margin-top: 5%;
+}
+
+#logout {
+  margin-top: 5%;
+  margin-left: 65%;
+  font-size: 18px;
+}
+
+/* .picture {
+  height: 25vh;
+} */

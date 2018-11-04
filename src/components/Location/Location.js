@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Modal from 'react-modal';
 import './Location.css';
 
@@ -51,7 +52,9 @@ class Location extends Component {
               <div className="ModalMilesAway">Average of {milesAway} miles away</div>
             </div>
         </div>
-        <button className="button" type='submit'>Select</button>
+        <NavLink to="/confirm">
+          <button className="button" to="/confirm">Select</button>
+        </NavLink>
         <div className="Open">Open</div>
         <div className='bigcontainer'>
           <div className='leftheaders'>

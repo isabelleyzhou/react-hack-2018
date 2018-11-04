@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Confirmation from './Confirmation';
 import LocationList from './components/LocationList';
 import './App.css';
-import Map from './Map.js';
 import firebase, { config, login, logout } from './firebase-config';
 import Profile from './Profile';
 import List from './List';
@@ -46,8 +47,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={logout}>Log Out</button>
-        <LocationList/>
+        <button id="logout" onClick={logout}>Log Out</button>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={LocationList} />
+            <Route exact path="/confirm" component={Confirmation} />
+          </Switch>
+        </Router>
       </div>
     );
   }
