@@ -8,9 +8,6 @@ import SearchBox from '../SearchBox.js';
 class LocationList extends Component {
   constructor() {
     super();
-    let location = null;
-    let lt = 0;
-    let ln = 0;
     this.state = {
       names: [],
       ratings: [],
@@ -23,7 +20,9 @@ class LocationList extends Component {
       buttonclicked: false
     };
     if (window.navigator && window.navigator.geolocation) {
-      location = window.navigator.geolocation;
+      this.setState({
+        location : window.navigator.geolocation
+      });
     }
     if (location){
       let self = this
@@ -210,7 +209,6 @@ class LocationList extends Component {
         <div className="entercontainer">
           <button id="enter" onClick={this.search}>Search</button>
         </div>
-        {this.findMiddleRestaurants()}
         {
           (this.state.loaded1 && this.state.buttonclicked) ?
           <div style={{ height: "40vh" }}>
