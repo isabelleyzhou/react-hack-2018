@@ -6,7 +6,7 @@ import './App.css';
 import firebase, { config, login, logout } from './firebase-config';
 import Profile from './Profile';
 import List from './List';
-
+/// BOOP
 const database = firebase.database();
 
 var snapshot = {};
